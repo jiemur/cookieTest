@@ -20,28 +20,28 @@ public class ListServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cookie[] cookies=req.getCookies();
-       /* Map<String,Cookie> maps=getCookie(cookies);
+        Map<String,Cookie> maps=getCookie(cookies);
         Cookie coo=maps.get("username");
         String uname=coo.getValue();
         HttpSession session=req.getSession();
         User u=(User) session.getAttribute("user");
+        List<Product> lists=service.getLists();
+        req.setAttribute("lists",lists);
         if(u==null){
             User user= userService.getOne(uname);
             session.setAttribute("user",user);
             req.getRequestDispatcher("WEB-INF/pages/list.jsp").forward(req,resp);
         }else{
             req.getRequestDispatcher("WEB-INF/pages/list.jsp").forward(req,resp);
-        }*/
-        List<Product> lists = service.getLists();
-        req.setAttribute("lists", lists);
-        req.getRequestDispatcher("WEB-INF/pages/list.jsp").forward(req,resp);
+        }
+
     }
     public static Map<String,Cookie> getCookie(Cookie[] cookies){
         Map<String,Cookie> maps=new HashMap<>();
         if(cookies!=null){
             for (Cookie c:cookies
                  ) {
-                maps.put(c.getValue(),c);
+                maps.put(c.getName(),c);
             }
         }
         return maps;

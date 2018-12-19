@@ -1,10 +1,5 @@
 package com.wzn.controller;
 
-
-import com.wzn.pojo.Product;
-import com.wzn.service.IProductService;
-import com.wzn.service.ProductServiceImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -15,15 +10,12 @@ import javax.servlet.http.Part;
 import java.io.*;
 
 @MultipartConfig
-@WebServlet("/doAdd")
-public class DoAddServlet extends HttpServlet {
-    private IProductService service = new ProductServiceImpl();
+@WebServlet("/img")
+public class ImgServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        double price = Double.parseDouble(req.getParameter("price"));
-        String des = req.getParameter("des");
         Part part=req.getPart("file");//获取上传文件
+        System.out.println(part.getSubmittedFileName());
         /*文件上传后的存储路径和名称*/
         String str="C:\\Users\\wzn\\cookieTest\\web\\img\\"+part.getSubmittedFileName();
         File file=new File(str);
@@ -36,15 +28,10 @@ public class DoAddServlet extends HttpServlet {
         int a = is.read(b,0,b.length);
         while(a!=-1){
             os.write(b);
-            a=is.read(b,0,b.length);
+           a=is.read(b,0,b.length);
         }
-        Product p = new Product();
-        p.setProductName(name);
-        p.setProductDes(des);
-        p.setPrice(price);
-        p.setUrl(url);
-        service.add(p);
-        /*重定向*/
-        resp.sendRedirect("list");
+
+
+
     }
 }

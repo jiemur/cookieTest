@@ -24,7 +24,7 @@ public class DoLoginServlet extends HttpServlet {
         String password = req.getParameter("pwd");
        /* System.out.println(username + "  " + password);  //测试语句u*/
         User user = service.getOne(username);
-        System.out.println(user);  //测试语句u
+          //测试语句u
         if (user != null) {
             if (user.getPassword().equals(password)) {   //密码验证成功，跳转登录界面
                 /*长时间存储*/
@@ -36,7 +36,7 @@ public class DoLoginServlet extends HttpServlet {
                 resp.addCookie(coop);
                 HttpSession session=req.getSession();
                 session.setAttribute("user",user);
-                req.getRequestDispatcher("WEB-INF/pages/list.jsp").forward(req,resp);
+                resp.sendRedirect("list");
                 resp.getWriter().write("1");
                 /*//重定向
                 resp.sendRedirect("list");*/

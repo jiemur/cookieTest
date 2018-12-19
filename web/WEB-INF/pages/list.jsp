@@ -26,8 +26,7 @@
     </style>
 </head>
 <body>
-    欢迎${user.username}<br>
-       ${lists}
+    欢迎${user.username}<br> <a href="exit">退出</a>
     <a href="add">添加</a>
     <table>
         <thead>
@@ -47,7 +46,7 @@
                 <td>${pro.productId}</td>  <%--这个地方是通过get方法获取--%>
                 <td>${pro.productName}</td>
                 <td>${pro.price}</td>
-                <td>${pro.url}</td>
+                <td><img src="${pro.url}"></td>
                 <td>${pro.productDes}</td>
                 <td><a href="delete?productId=${pro.productId}">删除</a>&nbsp;|&nbsp;<a href="update?productId=${pro.productId}">修改</a></td>
             </tr>
