@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class ListServlet extends HttpServlet {
     private IProductService service = new ProductServiceImpl();
-   private IUserService userService=new UserServiceImpl();
+    private IUserService userService=new UserServiceImpl();
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cookie[] cookies=req.getCookies();

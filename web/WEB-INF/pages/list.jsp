@@ -28,6 +28,10 @@
 <body>
     欢迎${user.username}<br> <a href="exit">退出</a>
     <a href="add">添加</a>
+   <form action="">
+       <input type="text" name="sou"><br>
+       <input type="submit" value="搜索">
+   </form>
     <table>
         <thead>
             <tr>
